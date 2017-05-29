@@ -2,7 +2,7 @@
 
 * [Redux](#redux)
   * [Reducer](#reducer)
-  * [Effects](#effects)
+  * [Epic](#Epics)
   * [Store](#store)
 * [ViewModel](#viewmodel)
 
@@ -23,13 +23,13 @@ It's called a reducer because it's the type of function you would pass to `Obser
 - Perform side effects like API calls and routing transitions;
 - Call non-pure functions, e.g. Date.now() or Math.random().
 
-### Effects
+### Epics
 Effects is the place where side-effect happens. Idea is pretty same as [Epics](https://redux-observable.js.org/docs/basics/Epics.html) from [redux-observable](https://redux-observable.js.org/). The different is we called the output is Result. 
 
 ~~~java
-public interface Effect<State> {
+public interface Epics<State> {
 
-  Observable<Result> apply(Observable<Action> action$, Function0<State> getState);
+  Observable<Result> apply(Observable<Action> action$, BehaviorSubject<State> state);
 }
 ~~~
 

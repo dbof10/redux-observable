@@ -1,4 +1,4 @@
-package vn.tale.architecture.home.effect;
+package vn.tale.architecture.home.epic;
 
 import io.reactivex.Observable;
 import io.reactivex.schedulers.Schedulers;
@@ -13,11 +13,11 @@ import vn.tale.architecture.model.manager.HomeModel;
 
 
 
-public class LoadEffect implements Effect<HomeState> {
+public class LoadEpic implements Effect<HomeState> {
 
     private final HomeModel homeModel;
 
-    public LoadEffect(HomeModel homeModel) {
+    public LoadEpic(HomeModel homeModel) {
         this.homeModel = homeModel;
     }
 

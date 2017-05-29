@@ -6,9 +6,9 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import vn.tale.architecture.ActivityScope;
 import vn.tale.architecture.common.redux.Store;
-import vn.tale.architecture.home.effect.LoadEffect;
-import vn.tale.architecture.home.effect.LoadMoreEffect;
-import vn.tale.architecture.home.effect.RefreshEffect;
+import vn.tale.architecture.home.epic.LoadEpic;
+import vn.tale.architecture.home.epic.LoadMoreEpic;
+import vn.tale.architecture.home.epic.RefreshEpic;
 import vn.tale.architecture.model.manager.HomeModel;
 
 /**
@@ -22,9 +22,9 @@ public class HomeModule {
     return Store.<HomeState>builder()
         .initialState(HomeState.idle())
         .effects(
-            new LoadEffect(homeModel),
-            new RefreshEffect(homeModel),
-            new LoadMoreEffect(homeModel))
+            new LoadEpic(homeModel),
+            new RefreshEpic(homeModel),
+            new LoadMoreEpic(homeModel))
         .reducer(new HomeReducer())
         .make();
   }

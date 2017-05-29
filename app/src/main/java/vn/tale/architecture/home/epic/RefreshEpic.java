@@ -1,4 +1,4 @@
-package vn.tale.architecture.home.effect;
+package vn.tale.architecture.home.epic;
 
 import io.reactivex.Observable;
 import io.reactivex.schedulers.Schedulers;
@@ -11,15 +11,11 @@ import vn.tale.architecture.home.action.HomeAction;
 import vn.tale.architecture.home.result.RefreshResult;
 import vn.tale.architecture.model.manager.HomeModel;
 
-/**
- * Created by Giang Nguyen on 3/28/17.
- */
-
-public class RefreshEffect implements Effect<HomeState> {
+public class RefreshEpic implements Effect<HomeState> {
 
   private final HomeModel homeModel;
 
-  public RefreshEffect(HomeModel homeModel) {
+  public RefreshEpic(HomeModel homeModel) {
     this.homeModel = homeModel;
   }
 

@@ -1,5 +1,4 @@
 # Redux + View + ViewModel = RVVM
-![RVVM](./wiki/Rvvm.png "RVVM")
 
 1. [Architecute](./wiki/Architecture.md)
 2. [Usage](./wiki/Usage.md)

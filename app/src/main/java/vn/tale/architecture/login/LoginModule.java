@@ -7,8 +7,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import vn.tale.architecture.ActivityScope;
 import vn.tale.architecture.common.EmailValidator;
 import vn.tale.architecture.common.redux.Store;
-import vn.tale.architecture.login.effect.CheckEmailEffect;
-import vn.tale.architecture.login.effect.SubmitEffect;
+import vn.tale.architecture.login.epic.CheckEmailEpic;
+import vn.tale.architecture.login.epic.SubmitEpic;
 import vn.tale.architecture.model.manager.UserModel;
 
 /**
@@ -25,8 +25,8 @@ public class LoginModule {
         .initialState(LoginState.idle())
         .reducer(new LoginReducer())
         .effects(
-            new CheckEmailEffect(emailValidator),
-            new SubmitEffect(userModel)
+            new CheckEmailEpic(emailValidator),
+            new SubmitEpic(userModel)
         )
         .make();
   }

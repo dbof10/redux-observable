@@ -7,9 +7,6 @@ import io.reactivex.functions.Function;
 import io.reactivex.functions.Predicate;
 import vn.tale.architecture.model.HomeSection;
 
-/**
- Created by Giang Nguyen on 3/31/17.
- */
 public class HomeViewModel {
 
     private final Observable<HomeState> state$;

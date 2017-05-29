@@ -1,4 +1,4 @@
-package vn.tale.architecture.login.effect;
+package vn.tale.architecture.login.epic;
 
 import io.reactivex.Observable;
 import timber.log.Timber;
@@ -11,15 +11,12 @@ import vn.tale.architecture.login.LoginState;
 import vn.tale.architecture.login.action.CheckEmailAction;
 import vn.tale.architecture.login.result.CheckEmailResult;
 
-/**
- * Created by Giang Nguyen on 3/23/17.
- */
 
-public class CheckEmailEffect implements Effect<LoginState> {
+public class CheckEmailEpic implements Effect<LoginState> {
 
   private EmailValidator emailValidator;
 
-  public CheckEmailEffect(EmailValidator emailValidator) {
+  public CheckEmailEpic(EmailValidator emailValidator) {
     this.emailValidator = emailValidator;
   }
 

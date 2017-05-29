@@ -1,4 +1,4 @@
-package vn.tale.architecture.login.effect;
+package vn.tale.architecture.login.epic;
 
 import io.reactivex.Observable;
 import io.reactivex.schedulers.Schedulers;
@@ -11,15 +11,12 @@ import vn.tale.architecture.login.action.SubmitAction;
 import vn.tale.architecture.login.result.SubmitResult;
 import vn.tale.architecture.model.manager.UserModel;
 
-/**
- * Created by Giang Nguyen on 3/23/17.
- */
 
-public class SubmitEffect implements Effect<LoginState> {
+public class SubmitEpic implements Effect<LoginState> {
 
   private final UserModel userModel;
 
-  public SubmitEffect(UserModel userModel) {
+  public SubmitEpic(UserModel userModel) {
     this.userModel = userModel;
   }
 
