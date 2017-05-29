@@ -1,0 +1,2 @@
+./buckw install --run appDevDebug
+echo "Total time: $SECONDS secs"

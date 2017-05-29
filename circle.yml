@@ -1,0 +1,20 @@
+machine:
+    java:
+        version: oraclejdk8
+    environment:
+        ANDROID_HOME: /usr/local/android-sdk-linux
+        CODECOV_TOKEN: "573f682c-e1b4-4726-b2ae-63fa9576fa90"
+
+dependencies:
+    pre:
+        - (source tools/environmentSetup.sh && getAndroidSDK)
+        - chmod +x gradlew
+        - bash ./gradlew dependencies
+    cache_directories:
+        - ~/.android
+        - ~/android
+
+test:
+    override:
+        - ./gradlew :app:check :app:javaCodeCoverage
+        - bash <(curl -s https://codecov.io/bash)

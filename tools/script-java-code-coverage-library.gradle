@@ -1,0 +1,43 @@
+apply plugin: 'jacoco'
+
+task javaCodeCoverage(type: JacocoReport, dependsOn: 'testDebugUnitTest') {
+
+  reports {
+    xml {
+      enabled true
+      destination "$project.buildDir/reports/jacoco/jacocoTestReport.xml"
+    }
+    html {
+      enabled true
+      destination "$project.buildDir/reports/jacoco/html/"
+    }
+  }
+
+  def classFileTree = fileTree(dir: "${buildDir}/intermediates/classes/debug",
+      excludes: ['**/R.class',
+                 '**/R$*.class',
+                 '**/BR.class',
+                 '**/BuildConfig.*',
+                 '**/Manifest*.*',
+                 '**/*Test*.*',
+                 '**/App.*',
+                 '**/*Activity.*',
+                 '**/*Fragment.*',
+                 '**/*Dialog.*',
+                 '**/*Adapter.*',
+                 '**/*Module.*',
+                 '**/*Component.*',
+                 '**/*MembersInjector.*', // Dagger auto-generated code.
+                 '**/*_Provide*Factory*.*', // Dagger auto-generated code.
+                 '**/*AutoValue_*.*',
+                 'android/**/*.*',
+                 '**/*Factory.*',
+                 '**/databinding/**',
+                 '**/widget/**',
+                 '**/**_ViewBinding.*',
+                 '**/*$*.class'])
+
+  classDirectories = files([classFileTree])
+  sourceDirectories = files("${project.projectDir}/android/src/main/java")
+  executionData = files("${buildDir}/jacoco/testDebugUnitTest.exec")
+}

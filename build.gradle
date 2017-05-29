@@ -1,0 +1,58 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+apply from: "$project.rootDir/tools/script-dependencies.gradle"
+
+buildscript {
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath 'com.android.tools.build:gradle:2.3.2'
+    classpath 'me.tatarka:gradle-retrolambda:3.6.0'
+    classpath 'com.uber:okbuck:0.19.6'
+    classpath 'com.jakewharton:butterknife-gradle-plugin:8.5.1'
+    // the latest version of the android-apt plugin
+
+    // NOTE: Do not place your application dependencies here; they belong
+    // in the individual module build.gradle files
+  }
+}
+
+repositories {
+  jcenter()
+}
+
+apply plugin: 'com.uber.okbuck'
+
+allprojects {
+  repositories {
+    jcenter()
+    maven {
+      url = "https://oss.sonatype.org/content/repositories/snapshots/"
+    }
+  }
+}
+
+task clean(type: Delete) {
+  delete rootProject.buildDir
+}
+
+project.ext.preDexLibraries = !rootProject.ext.ci
+
+subprojects {
+  project.plugins.whenPluginAdded { plugin ->
+    if ("com.android.build.gradle.AppPlugin" == plugin.class.name) {
+      project.android.dexOptions.preDexLibraries = rootProject.ext.preDexLibraries
+    } else if ("com.android.build.gradle.LibraryPlugin" == plugin.class.name) {
+      project.android.dexOptions.preDexLibraries = rootProject.ext.preDexLibraries
+    }
+  }
+
+  tasks.whenTaskAdded { task ->
+    if (task.name == 'check') {
+      task.dependsOn('findbugs')
+      task.dependsOn('lint')
+      task.dependsOn('pmd')
+    }
+  }
+}

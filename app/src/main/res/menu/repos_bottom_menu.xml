@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <item
+      android:id="@+id/action_public_repos"
+      android:enabled="true"
+      android:icon="@drawable/ic_public_24dp"
+      android:title="@string/public_repos"
+      app:showAsAction="ifRoom"/>
+
+  <item
+      android:id="@+id/action_my_repos"
+      android:enabled="true"
+      android:icon="@drawable/ic_person_24dp"
+      android:title="@string/my_repos"
+      app:showAsAction="ifRoom"/>
+
+</menu>

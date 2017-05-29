@@ -1,0 +1,6 @@
+ext {
+  ci = 'true' == System.getenv('CI')
+  minSdkVersion = project.hasProperty('dev') ? 21 : 16
+  compileSdkVersion = 25
+  buildToolsVersion = "25.0.2"
+}
